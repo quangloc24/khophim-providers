@@ -43,17 +43,26 @@ async function scrapeVideasyEmbed(ctx: any, filterQuality?: string) {
 
   if (sources.length === 0) throw new NotFoundError('No matching streams found');
 
-  const streams = sources.map((src: any) => ({
-    id: `primary-${src.quality || 'auto'}`,
-    type: 'hls' as const,
-    playlist: src.url,
-    flags: [],
-    headers,
-    captions: [],
-  })).reverse(); // Put highest quality first
+  const qualities: Record<string, { type: 'mp4', url: string }> = {};
+  sources.forEach((src: any) => {
+    const qKey = src.quality?.replace('p', '') || 'unknown';
+    qualities[qKey] = {
+      type: 'mp4' as const,
+      url: src.url,
+    };
+  });
 
   return {
-    stream: streams,
+    stream: [
+      {
+        id: 'primary',
+        type: 'file' as const,
+        flags: [],
+        headers,
+        captions: [],
+        qualities,
+      }
+    ]
   };
 }
 
