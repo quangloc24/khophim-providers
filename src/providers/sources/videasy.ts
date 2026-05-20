@@ -33,7 +33,7 @@ async function decrypt(blob: string, tmdbId: string, ctx: ShowScrapeContext | Mo
   }
 }
 
-async function fetchServer(server: any, id: string, s: number, e: number, ctx: ShowScrapeContext | MovieScrapeContext): Promise<string[]> {
+async function fetchServer(server: any, id: string, s: number, e: number, ctx: ShowScrapeContext | MovieScrapeContext): Promise<any[]> {
   try {
     const params = new URLSearchParams({
       title: '',
@@ -50,7 +50,7 @@ async function fetchServer(server: any, id: string, s: number, e: number, ctx: S
     const decrypted = await decrypt(blob, String(id), ctx);
     if (!decrypted || !decrypted.sources?.length) return [];
 
-    return decrypted.sources.filter((x: any) => x?.url).map((x: any) => x.url);
+    return decrypted.sources.filter((x: any) => x?.url);
   } catch {
     return [];
   }
@@ -67,15 +67,30 @@ async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promis
 
   const results = await Promise.all(servers.map(srv => fetchServer(srv, tmdbId, season, episode, ctx)));
 
-  for (const urls of results) {
-    if (urls && urls.length) {
+  for (const sources of results) {
+    if (sources && sources.length) {
       ctx.progress(90);
+      
+      const masterPlaylist = sources.map((src: any) => {
+        const quality = String(src.quality || '').toLowerCase();
+        let bandwidth = 500000;
+        let resolution = '640x360';
+        
+        if (quality.includes('1080')) { bandwidth = 5000000; resolution = '1920x1080'; }
+        else if (quality.includes('720')) { bandwidth = 2500000; resolution = '1280x720'; }
+        else if (quality.includes('480')) { bandwidth = 1000000; resolution = '854x480'; }
+        
+        return `#EXT-X-STREAM-INF:BANDWIDTH=${bandwidth},RESOLUTION=${resolution}\n${src.url}`;
+      }).join('\n');
+      
+      const masterUrl = `data:application/vnd.apple.mpegurl;base64,${btoa('#EXTM3U\n' + masterPlaylist)}`;
+
       return {
         stream: [
           {
             id: 'primary',
             type: 'hls' as const,
-            playlist: urls[0],
+            playlist: masterUrl,
             flags: [],
             headers,
             captions: [],
