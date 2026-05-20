@@ -237,7 +237,7 @@ async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promis
 export const cinezoScraper = makeSourcerer({
   id: 'cinezo',
   name: 'Cinezo',
-  rank: 140,
+  rank: 940,
   disabled: false,
   flags: [],
   scrapeMovie: comboScraper,

@@ -23,7 +23,7 @@ async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promis
 export const vidnestScraper = makeSourcerer({
   id: 'vidnest',
   name: 'Vidnest',
-  rank: 115,
+  rank: 915,
   flags: [],
   disabled: false, // The streams cause the site to crash
   scrapeMovie: comboScraper,
