@@ -71,31 +71,17 @@ async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promis
     if (sources && sources.length) {
       ctx.progress(90);
       
-      const masterPlaylist = sources.map((src: any) => {
-        const quality = String(src.quality || '').toLowerCase();
-        let bandwidth = 500000;
-        let resolution = '640x360';
-        
-        if (quality.includes('1080')) { bandwidth = 5000000; resolution = '1920x1080'; }
-        else if (quality.includes('720')) { bandwidth = 2500000; resolution = '1280x720'; }
-        else if (quality.includes('480')) { bandwidth = 1000000; resolution = '854x480'; }
-        
-        return `#EXT-X-STREAM-INF:BANDWIDTH=${bandwidth},RESOLUTION=${resolution}\n${src.url}`;
-      }).join('\n');
-      
-      const masterUrl = `data:application/vnd.apple.mpegurl;base64,${btoa('#EXTM3U\n' + masterPlaylist)}`;
+      const streams = sources.map((src: any) => ({
+        id: `primary-${src.quality || 'auto'}`,
+        type: 'hls' as const,
+        playlist: src.url,
+        flags: [],
+        headers,
+        captions: [],
+      })).reverse(); // Put highest quality first
 
       return {
-        stream: [
-          {
-            id: 'primary',
-            type: 'hls' as const,
-            playlist: masterUrl,
-            flags: [],
-            headers,
-            captions: [],
-          },
-        ],
+        stream: streams,
         embeds: [],
       };
     }
