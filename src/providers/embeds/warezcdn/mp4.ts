@@ -26,7 +26,7 @@ export const warezcdnembedMp4Scraper = makeEmbed({
   id: 'warezcdnembedmp4', // WarezCDN is both a source and an embed host
   name: 'WarezCDN MP4',
   // method no longer works
-  rank: 82,
+  rank: 982,
   flags: [flags.CORS_ALLOWED],
   disabled: false,
   async scrape(ctx) {

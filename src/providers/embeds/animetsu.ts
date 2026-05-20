@@ -96,4 +96,4 @@ export function makeAnimetsuEmbed(id: string, rank: number = 100) {
   });
 }
 
-export const AnimetsuEmbeds = ANIMETSU_SERVERS.map((server, i) => makeAnimetsuEmbed(server, 300 - i));
+export const AnimetsuEmbeds = ANIMETSU_SERVERS.map((server, i) => makeAnimetsuEmbed(server, 930 - i));
