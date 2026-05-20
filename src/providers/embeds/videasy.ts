@@ -1,0 +1,138 @@
+import { makeEmbed } from '@/providers/base';
+import { NotFoundError } from '@/utils/errors';
+
+const decApi = 'https://enc-dec.app/api/dec-videasy';
+
+const headers = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+  'Accept': 'application/json, */*; q=0.01',
+  'Referer': 'https://player.videasy.net/',
+  'Origin': 'https://player.videasy.net',
+};
+
+async function decrypt(blob: string, tmdbId: string, ctx: any): Promise<any> {
+  if (!blob || blob.length < 10) return null;
+  try {
+    const res = await ctx.proxiedFetcher(decApi, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: blob, id: tmdbId }),
+    });
+    if (res?.status !== 200 || !res?.result?.sources) return null;
+    return res.result;
+  } catch {
+    return null;
+  }
+}
+
+async function scrapeVideasyEmbed(ctx: any, filterQuality?: string) {
+  const url = ctx.url;
+  const tmdbId = new URL(url).searchParams.get('tmdbId');
+  if (!tmdbId) throw new NotFoundError('Missing TMDB ID');
+
+  const blob = await ctx.proxiedFetcher(url, { headers });
+  if (!blob || blob.length < 10) throw new NotFoundError('No stream found');
+
+  const decrypted = await decrypt(blob, tmdbId, ctx);
+  if (!decrypted || !decrypted.sources?.length) throw new NotFoundError('Failed to decrypt streams');
+
+  let sources = decrypted.sources.filter((x: any) => x?.url);
+  if (filterQuality) {
+    sources = sources.filter((x: any) => x.quality === filterQuality);
+  }
+
+  if (sources.length === 0) throw new NotFoundError('No matching streams found');
+
+  const streams = sources.map((src: any) => ({
+    id: `primary-${src.quality || 'auto'}`,
+    type: 'hls' as const,
+    playlist: src.url,
+    flags: [],
+    headers,
+    captions: [],
+  })).reverse(); // Put highest quality first
+
+  return {
+    stream: streams,
+  };
+}
+
+export const videasyYoruEmbed = makeEmbed({
+  id: 'videasy-yoru',
+  name: 'Yoru (Original - 4K)',
+  rank: 959,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx),
+});
+
+export const videasyNeonEmbed = makeEmbed({
+  id: 'videasy-neon',
+  name: 'Neon (Original)',
+  rank: 958,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx),
+});
+
+export const videasyBreachEmbed = makeEmbed({
+  id: 'videasy-breach',
+  name: 'Breach (Original)',
+  rank: 957,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx),
+});
+
+export const videasyCypherEmbed = makeEmbed({
+  id: 'videasy-cypher',
+  name: 'Cypher (Original)',
+  rank: 956,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx),
+});
+
+export const videasySageEmbed = makeEmbed({
+  id: 'videasy-sage',
+  name: 'Sage (Original)',
+  rank: 955,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx),
+});
+
+export const videasyVyseEmbed = makeEmbed({
+  id: 'videasy-vyse',
+  name: 'Vyse (Original)',
+  rank: 954,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx, 'English'),
+});
+
+export const videasyOmenEmbed = makeEmbed({
+  id: 'videasy-omen',
+  name: 'Omen (Original)',
+  rank: 953,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx),
+});
+
+export const videasyRazeEmbed = makeEmbed({
+  id: 'videasy-raze',
+  name: 'Raze (Original)',
+  rank: 952,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx),
+});
+
+export const videasyFadeEmbed = makeEmbed({
+  id: 'videasy-fade',
+  name: 'Fade (Hindi Audio)',
+  rank: 951,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx, 'Hindi'),
+});
+
+export const videasyKilljoyEmbed = makeEmbed({
+  id: 'videasy-killjoy',
+  name: 'Killjoy (German Audio)',
+  rank: 950,
+  flags: [],
+  scrape: (ctx) => scrapeVideasyEmbed(ctx),
+});

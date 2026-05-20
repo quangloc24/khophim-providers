@@ -71,6 +71,18 @@ import { warezcdnembedHlsScraper } from './embeds/warezcdn/hls';
 import { warezcdnembedMp4Scraper } from './embeds/warezcdn/mp4';
 import { warezPlayerScraper } from './embeds/warezcdn/warezplayer';
 import { zunimeEmbeds } from './embeds/zunime';
+import {
+  videasyYoruEmbed,
+  videasyNeonEmbed,
+  videasyBreachEmbed,
+  videasyCypherEmbed,
+  videasySageEmbed,
+  videasyVyseEmbed,
+  videasyOmenEmbed,
+  videasyRazeEmbed,
+  videasyFadeEmbed,
+  videasyKilljoyEmbed,
+} from './embeds/videasy';
 import { EightStreamScraper } from './sources/8stream';
 import { animeflvScraper } from './sources/animeflv';
 import { animetsuScraper } from './sources/animetsu';
@@ -234,5 +246,15 @@ export function gatherAllEmbeds(): Array<Embed> {
     supervideoScraper,
     voeScraper,
     AnimekaiScraper,
+    videasyYoruEmbed,
+    videasyNeonEmbed,
+    videasyBreachEmbed,
+    videasyCypherEmbed,
+    videasySageEmbed,
+    videasyVyseEmbed,
+    videasyOmenEmbed,
+    videasyRazeEmbed,
+    videasyFadeEmbed,
+    videasyKilljoyEmbed,
   ];
 }
