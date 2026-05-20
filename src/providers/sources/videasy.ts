@@ -79,38 +79,26 @@ async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promis
   }
   const tmdbId = ctx.media.tmdbId;
 
-  const results = await Promise.all(servers.map(srv => fetchServer(srv, tmdbId, season, episode, ctx)));
-
-  const embeds: any[] = [];
-
-  for (let i = 0; i < servers.length; i++) {
-    const sources = results[i];
-    const server = servers[i];
-    if (sources && sources.length) {
-      const queryObj: Record<string, string> = {
-        title: '',
-        mediaType: ctx.media.type === 'show' ? 'tv' : 'movie',
-        tmdbId: String(tmdbId),
-        imdbId: '',
-        episodeId: String(episode),
-        seasonId: String(season),
-      };
-      if (server.extraParams) {
-        Object.assign(queryObj, server.extraParams);
-      }
-      const params = new URLSearchParams(queryObj);
-      const url = `${server.url}?${params}`;
-
-      embeds.push({
-        embedId: `videasy-${server.name.toLowerCase()}`,
-        url,
-      });
+  const embeds = servers.map((server) => {
+    const queryObj: Record<string, string> = {
+      title: '',
+      mediaType: ctx.media.type === 'show' ? 'tv' : 'movie',
+      tmdbId: String(tmdbId),
+      imdbId: '',
+      episodeId: String(episode),
+      seasonId: String(season),
+    };
+    if (server.extraParams) {
+      Object.assign(queryObj, server.extraParams);
     }
-  }
+    const params = new URLSearchParams(queryObj);
+    const url = `${server.url}?${params}`;
 
-  if (embeds.length === 0) {
-    throw new NotFoundError('No stream found');
-  }
+    return {
+      embedId: `videasy-${server.name.toLowerCase()}`,
+      url,
+    };
+  });
 
   ctx.progress(90);
   return {
