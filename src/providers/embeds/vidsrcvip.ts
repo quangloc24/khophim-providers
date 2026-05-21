@@ -21,8 +21,8 @@ const embeds = [
 ];
 
 const headers = {
-  referer: 'https://vidsrc.vip/',
-  origin: 'https://vidsrc.vip',
+  referer: 'https://vsembed.ru/',
+  origin: 'https://vsembed.ru',
 };
 
 function makeVidSrcEmbed(provider: { id: string; name: string; rank: number }) {

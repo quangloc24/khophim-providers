@@ -3,7 +3,7 @@ import { SourcererEmbed, SourcererOutput, makeSourcerer } from '@/providers/base
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
 
-const baseUrl = 'https://api2.vidsrc.vip';
+const baseUrl = 'https://vsembed.ru';
 
 function digitToLetterMap(digit: string): string {
   const map = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
