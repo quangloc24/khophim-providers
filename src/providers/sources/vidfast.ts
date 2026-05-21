@@ -38,9 +38,9 @@ async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promis
     if (ctx.media.type === 'show') {
       embedUrl =
         `${baseUrl}/tv/${tmdbId}/${ctx.media.season.number}/${ctx.media.episode.number}` +
-        `?server=${server.serverParam}&autoPlay=true`;
+        `#${server.serverParam}`;
     } else {
-      embedUrl = `${baseUrl}/movie/${tmdbId}?server=${server.serverParam}&autoPlay=true`;
+      embedUrl = `${baseUrl}/movie/${tmdbId}#${server.serverParam}`;
     }
 
     return {
