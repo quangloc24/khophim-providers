@@ -284,7 +284,7 @@ export const vidfastMeliodasEmbed = makeEmbed({
 
 // 🔥 Vfast — sometimes delivers 4K resolution
 export const vidfastVefastEmbed = makeEmbed({
-  id: 'vidfast-vefast',
+  id: 'vidfast-vfast',
   name: 'Vfast 🔥 (4K)',
   rank: 901,
   flags: [],
