@@ -282,11 +282,11 @@ export const vidfastMeliodasEmbed = makeEmbed({
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Meliodas'),
 });
 
-// 🔥 Vefast — sometimes delivers 4K resolution
+// 🔥 Vfast — sometimes delivers 4K resolution
 export const vidfastVefastEmbed = makeEmbed({
   id: 'vidfast-vefast',
-  name: 'Vefast 🔥 (4K)',
+  name: 'Vfast 🔥 (4K)',
   rank: 901,
   flags: [],
-  scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Vefast'),
+  scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Vfast'),
 });

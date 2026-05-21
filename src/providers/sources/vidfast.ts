@@ -9,7 +9,7 @@ const baseUrl = 'https://vidfast.pro';
 // the internal API endpoint is confirmed.
 const servers = [
   // 🔥 4K-capable server — stays on top
-  { name: 'Vefast',    serverParam: 'vefast'    },
+  { name: 'Vfast',    serverParam: 'vfast'    },
   { name: 'Alpha',     serverParam: 'Alpha'     },
   { name: 'Beta',      serverParam: 'Beta'      },
   { name: 'Oscar',     serverParam: 'Oscar'     },
