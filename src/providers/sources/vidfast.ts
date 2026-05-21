@@ -57,10 +57,9 @@ export const vidfastScraper = makeSourcerer({
   id: 'vidfast',
   name: 'VidFast 🔥',
   rank: 920,
-  // Disabled: VidFast player is a React SPA — plain HTTP fetch returns an
-  // empty HTML shell with no stream data. Re-enable once the internal API
-  // endpoint is identified via network inspection.
-  disabled: true,
+  // Enabled: VidFast player encryption flow is fully implemented and resolved 
+  // via the enc-dec.app API decryption endpoints.
+  disabled: false,
   flags: [],
   scrapeMovie: comboScraper,
   scrapeShow: comboScraper,
