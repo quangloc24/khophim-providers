@@ -43,9 +43,25 @@ async function scrapeVideasyEmbed(ctx: any, filterQuality?: string) {
 
   if (sources.length === 0) throw new NotFoundError('No matching streams found');
 
+  // Normalize quality labels to what the player expects:
+  // "2160p" or "4K" / "4k" → "4k"
+  // "1080p" → "1080", "720p" → "720", "480p" → "480", "360p" → "360"
+  function normalizeQuality(raw: string | undefined): string {
+    if (!raw) return 'unknown';
+    const lower = raw.toLowerCase().trim();
+    if (lower === '4k' || lower === '2160p' || lower === '2160' || lower === 'uhd') return '4k';
+    if (lower === '1080p' || lower === '1080') return '1080';
+    if (lower === '720p' || lower === '720') return '720';
+    if (lower === '480p' || lower === '480') return '480';
+    if (lower === '360p' || lower === '360') return '360';
+    // fallback: strip trailing 'p' for numeric quality like '540p'
+    const stripped = raw.replace(/p$/i, '');
+    return stripped || 'unknown';
+  }
+
   const qualities: Record<string, { type: 'mp4', url: string }> = {};
   sources.forEach((src: any) => {
-    const qKey = src.quality?.replace('p', '') || 'unknown';
+    const qKey = normalizeQuality(src.quality);
     qualities[qKey] = {
       type: 'mp4' as const,
       url: src.url,
