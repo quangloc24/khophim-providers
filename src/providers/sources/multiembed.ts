@@ -29,7 +29,7 @@ async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promis
 export const multiembedScraper = makeSourcerer({
   id: 'multiembed',
   name: 'MultiEmbed 🔥',
-  rank: 145,
+  rank: 146,
   disabled: false,
   flags: [flags.CORS_ALLOWED],
   scrapeMovie: comboScraper,
