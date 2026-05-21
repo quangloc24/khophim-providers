@@ -83,6 +83,27 @@ import {
   videasyFadeEmbed,
   videasyKilljoyEmbed,
 } from './embeds/videasy';
+import {
+  vidfastAlphaEmbed,
+  vidfastBetaEmbed,
+  vidfastOscarEmbed,
+  vidfastMaxEmbed,
+  vidfastIronEmbed,
+  vidfastCharlieEmbed,
+  vidfastCobraEmbed,
+  vidfastViperEmbed,
+  vidfastRangerEmbed,
+  vidfastSpecterEmbed,
+  vidfastEchoEmbed,
+  vidfastVodkaEmbed,
+  vidfastPabloEmbed,
+  vidfastLocoEmbed,
+  vidfastSambaEmbed,
+  vidfastBollywoodEmbed,
+  vidfastKiritoEmbed,
+  vidfastMeliodasEmbed,
+  vidfastVefastEmbed,
+} from './embeds/vidfast';
 import { EightStreamScraper } from './sources/8stream';
 import { animeflvScraper } from './sources/animeflv';
 import { animetsuScraper } from './sources/animetsu';
@@ -93,6 +114,7 @@ import { icefyScraper } from './sources/icefy';
 import { vixsrcScraper } from './sources/vixsrc';
 import { vidzeeScraper } from './sources/vidzee';
 import { videasyScraper } from './sources/videasy';
+import { vidfastScraper } from './sources/vidfast';
 import { vidkingScraper } from './sources/vidking';
 import { cinezoScraper } from './sources/cinezo';
 import { coitusScraper } from './sources/coitus';
@@ -173,6 +195,7 @@ export function gatherAllSources(): Array<Sourcerer> {
     vixsrcScraper,
     vidzeeScraper,
     videasyScraper,
+    vidfastScraper,
     vidkingScraper,
     cinezoScraper,
     fullhdfilmizleScraper,
@@ -256,5 +279,24 @@ export function gatherAllEmbeds(): Array<Embed> {
     videasyRazeEmbed,
     videasyFadeEmbed,
     videasyKilljoyEmbed,
+    vidfastAlphaEmbed,
+    vidfastBetaEmbed,
+    vidfastOscarEmbed,
+    vidfastMaxEmbed,
+    vidfastIronEmbed,
+    vidfastCharlieEmbed,
+    vidfastCobraEmbed,
+    vidfastViperEmbed,
+    vidfastRangerEmbed,
+    vidfastSpecterEmbed,
+    vidfastEchoEmbed,
+    vidfastVodkaEmbed,
+    vidfastPabloEmbed,
+    vidfastLocoEmbed,
+    vidfastSambaEmbed,
+    vidfastBollywoodEmbed,
+    vidfastKiritoEmbed,
+    vidfastMeliodasEmbed,
+    vidfastVefastEmbed,
   ];
 }
