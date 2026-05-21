@@ -4,7 +4,7 @@ import { SourcererOutput, makeSourcerer } from '@/providers/base';
 import { ShowScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
 
-const baseUrl = 'https://cinehdplus.gratis';
+const baseUrl = 'https://cinehdplus.zone';
 
 async function comboScraper(ctx: ShowScrapeContext): Promise<SourcererOutput> {
   const searchUrl = `${baseUrl}/series/?story=${ctx.media.tmdbId}&do=search&subaction=search`;
@@ -60,7 +60,7 @@ async function comboScraper(ctx: ShowScrapeContext): Promise<SourcererOutput> {
         return null;
       }
     })
-    .filter((url): url is URL => url !== null && url.hostname !== 'cinehdplus.gratis');
+    .filter((url): url is URL => url !== null && url.hostname !== 'cinehdplus.zone');
 
   if (!mirrorUrls.length) {
     throw new NotFoundError('No streaming links found for this episode');

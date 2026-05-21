@@ -6,7 +6,7 @@ import { NotFoundError } from '@/utils/errors';
 
 import { IframeSourceResult, SearchResult } from './types';
 
-const ridoMoviesBase = `https://ridomovies.tv`;
+const ridoMoviesBase = `https://ridomovies.is`;
 const ridoMoviesApiBase = `${ridoMoviesBase}/core/api`;
 
 const normalizeTitle = (title: string): string => {

@@ -7,33 +7,20 @@ import { doodScraper } from '@/providers/embeds/dood';
 import { filemoonScraper } from '@/providers/embeds/filemoon';
 import { mixdropScraper } from '@/providers/embeds/mixdrop';
 import { serverMirrorEmbed } from '@/providers/embeds/server-mirrors';
-import { turbovidScraper } from '@/providers/embeds/turbovid';
 import { upcloudScraper } from '@/providers/embeds/upcloud';
-import { autoembedScraper } from '@/providers/sources/autoembed';
-import { dopeboxEmbeds, dopeboxScraper } from '@/providers/sources/dopebox/index';
 import { ee3Scraper } from '@/providers/sources/ee3';
 import { fsharetvScraper } from '@/providers/sources/fsharetv';
 import { fsOnlineEmbeds, fsOnlineScraper } from '@/providers/sources/fsonline/index';
 import { insertunitScraper } from '@/providers/sources/insertunit';
-import { mp4hydraScraper } from '@/providers/sources/mp4hydra';
-import { pirxcyScraper } from '@/providers/sources/pirxcy';
 import { tugaflixScraper } from '@/providers/sources/tugaflix';
 import { vidsrcvipScraper } from '@/providers/sources/vidsrcvip';
-import { zoechipScraper } from '@/providers/sources/zoechip';
+import { streambucketScraper } from '@/providers/embeds/streambucket';
 
 import { AnimetsuEmbeds } from './embeds/animetsu';
-import {
-  autoembedBengaliScraper,
-  autoembedEnglishScraper,
-  autoembedHindiScraper,
-  autoembedTamilScraper,
-  autoembedTeluguScraper,
-} from './embeds/autoembed';
 import { cinemaosEmbeds } from './embeds/cinemaos';
 import { closeLoadScraper } from './embeds/closeload';
 import { droploadScraper } from './embeds/dropload';
 import { filelionsScraper } from './embeds/filelions';
-import { mp4hydraServer1Scraper, mp4hydraServer2Scraper } from './embeds/mp4hydra';
 import { myanimedubScraper } from './embeds/myanimedub';
 import { myanimesubScraper } from './embeds/myanimesub';
 import { ridooScraper } from './embeds/ridoo';
@@ -120,22 +107,17 @@ import { cinezoScraper } from './sources/cinezo';
 import { coitusScraper } from './sources/coitus';
 import { cuevana3Scraper } from './sources/cuevana3';
 import { debridScraper } from './sources/debrid';
-import { embedsuScraper } from './sources/embedsu';
 import { fullhdfilmizleScraper } from './sources/fullhdfilmizle';
 import { hdRezkaScraper } from './sources/hdrezka';
 import { lookmovieScraper } from './sources/lookmovie';
 import { movies4fScraper } from './sources/movies4f';
+import { multiembedScraper } from './sources/multiembed';
 import { myanimeScraper } from './sources/myanime';
 import { nunflixScraper } from './sources/nunflix';
 import { pelisplushdScraper } from './sources/pelisplushd';
-import { primewireScraper } from './sources/primewire';
-import { rgshowsScraper } from './sources/rgshows';
 import { ridooMoviesScraper } from './sources/ridomovies';
 import { slidemoviesScraper } from './sources/slidemovies';
 import { soaperTvScraper } from './sources/soapertv';
-import { streamboxScraper } from './sources/streambox';
-import { turbovidSourceScraper } from './sources/turbovid';
-import { vidapiClickScraper } from './sources/vidapiclick';
 import { vidifyScraper } from './sources/vidify';
 import { vidlinkScraper } from './sources/vidlink';
 import { vidnestScraper } from './sources/vidnest';
@@ -149,25 +131,18 @@ export function gatherAllSources(): Array<Sourcerer> {
   // all sources are gathered here
   return [
     fsOnlineScraper,
-    dopeboxScraper,
     cuevana3Scraper,
     ridooMoviesScraper,
     hdRezkaScraper,
     warezcdnScraper,
     insertunitScraper,
     soaperTvScraper,
-    autoembedScraper,
     myanimeScraper,
     tugaflixScraper,
     ee3Scraper,
     fsharetvScraper,
-    zoechipScraper,
-    mp4hydraScraper,
-    embedsuScraper,
     slidemoviesScraper,
-    vidapiClickScraper,
     coitusScraper,
-    streamboxScraper,
     nunflixScraper,
     EightStreamScraper,
     wecimaScraper,
@@ -175,17 +150,13 @@ export function gatherAllSources(): Array<Sourcerer> {
     animekaiScraper,
     FedAPIScraper,
     FedAPIDBScraper,
-    pirxcyScraper,
     vidsrcvipScraper,
-    rgshowsScraper,
     vidifyScraper,
     zunimeScraper,
     vidnestScraper,
     animetsuScraper,
     lookmovieScraper,
-    turbovidSourceScraper,
     pelisplushdScraper,
-    primewireScraper,
     movies4fScraper,
     debridScraper,
     cinehdplusScraper,
@@ -202,6 +173,7 @@ export function gatherAllSources(): Array<Sourcerer> {
     vidlinkScraper,
     vidrockScraper,
     watchanimeworldScraper,
+    multiembedScraper,
   ];
 }
 
@@ -209,7 +181,6 @@ export function gatherAllEmbeds(): Array<Embed> {
   // all embeds are gathered here
   return [
     ...fsOnlineEmbeds,
-    ...dopeboxEmbeds,
     serverMirrorEmbed,
     upcloudScraper,
     vidCloudScraper,
@@ -222,14 +193,7 @@ export function gatherAllEmbeds(): Array<Embed> {
     warezcdnembedHlsScraper,
     warezcdnembedMp4Scraper,
     warezPlayerScraper,
-    autoembedEnglishScraper,
-    autoembedHindiScraper,
-    autoembedBengaliScraper,
-    autoembedTamilScraper,
-    autoembedTeluguScraper,
-    turbovidScraper,
-    mp4hydraServer1Scraper,
-    mp4hydraServer2Scraper,
+    streambucketScraper,
     VidsrcsuServer1Scraper,
     VidsrcsuServer2Scraper,
     VidsrcsuServer3Scraper,
