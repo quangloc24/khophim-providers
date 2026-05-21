@@ -3,9 +3,13 @@ import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 
 const baseUrl = 'https://vidfast.pro';
 
-// 18 servers from VidFast status page.
-// "vefast" is a bonus 4K-capable server highlighted with 🔥.
+// 19 servers from VidFast status page.
+// Vefast 🔥 is placed FIRST — sometimes delivers 4K resolution.
+// NOTE: VidFast's player is a React SPA; scraping is disabled until
+// the internal API endpoint is confirmed.
 const servers = [
+  // 🔥 4K-capable server — stays on top
+  { name: 'Vefast',    serverParam: 'vefast'    },
   { name: 'Alpha',     serverParam: 'Alpha'     },
   { name: 'Beta',      serverParam: 'Beta'      },
   { name: 'Oscar',     serverParam: 'Oscar'     },
@@ -24,8 +28,6 @@ const servers = [
   { name: 'Bollywood', serverParam: 'Bollywood' },
   { name: 'Kirito',    serverParam: 'Kirito'    },
   { name: 'Meliodas',  serverParam: 'Meliodas'  },
-  // vefast — sometimes delivers 4K resolution 🔥
-  { name: 'Vefast',    serverParam: 'vefast'    },
 ];
 
 async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promise<SourcererOutput> {
@@ -55,7 +57,10 @@ export const vidfastScraper = makeSourcerer({
   id: 'vidfast',
   name: 'VidFast 🔥',
   rank: 920,
-  disabled: false,
+  // Disabled: VidFast player is a React SPA — plain HTTP fetch returns an
+  // empty HTML shell with no stream data. Re-enable once the internal API
+  // endpoint is identified via network inspection.
+  disabled: true,
   flags: [],
   scrapeMovie: comboScraper,
   scrapeShow: comboScraper,

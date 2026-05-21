@@ -68,7 +68,7 @@ async function scrapeVideasyEmbed(ctx: any, filterQuality?: string) {
 
 export const videasyYoruEmbed = makeEmbed({
   id: 'videasy-yoru',
-  name: 'Yoru (Original - 4K)',
+  name: 'Yoru 🔥 (Original - 4K)',
   rank: 959,
   flags: [],
   scrape: (ctx) => scrapeVideasyEmbed(ctx),
