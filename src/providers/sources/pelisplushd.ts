@@ -6,7 +6,7 @@ import { SourcererOutput, makeSourcerer } from '@/providers/base';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
 
-const baseUrl = 'https://ww3.pelisplus.to';
+const baseUrl = 'https://tioplus.app';
 
 function normalizeTitle(title: string): string {
   return title

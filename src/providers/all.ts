@@ -8,10 +8,8 @@ import { filemoonScraper } from '@/providers/embeds/filemoon';
 import { mixdropScraper } from '@/providers/embeds/mixdrop';
 import { serverMirrorEmbed } from '@/providers/embeds/server-mirrors';
 import { upcloudScraper } from '@/providers/embeds/upcloud';
-import { ee3Scraper } from '@/providers/sources/ee3';
 import { fsharetvScraper } from '@/providers/sources/fsharetv';
 import { fsOnlineEmbeds, fsOnlineScraper } from '@/providers/sources/fsonline/index';
-import { insertunitScraper } from '@/providers/sources/insertunit';
 import { tugaflixScraper } from '@/providers/sources/tugaflix';
 import { vidsrcvipScraper } from '@/providers/sources/vidsrcvip';
 import { streambucketScraper } from '@/providers/embeds/streambucket';
@@ -88,7 +86,7 @@ import {
   vidfastMeliodasEmbed,
   vidfastVefastEmbed,
 } from './embeds/vidfast';
-import { EightStreamScraper } from './sources/8stream';
+
 import { animeflvScraper } from './sources/animeflv';
 import { animetsuScraper } from './sources/animetsu';
 import { cinehdplusScraper } from './sources/cinehdplus-es';
@@ -107,13 +105,11 @@ import { debridScraper } from './sources/debrid';
 import { fullhdfilmizleScraper } from './sources/fullhdfilmizle';
 import { hdRezkaScraper } from './sources/hdrezka';
 import { lookmovieScraper } from './sources/lookmovie';
-import { movies4fScraper } from './sources/movies4f';
 import { multiembedScraper } from './sources/multiembed';
 import { myanimeScraper } from './sources/myanime';
 import { nunflixScraper } from './sources/nunflix';
 import { pelisplushdScraper } from './sources/pelisplushd';
 import { ridooMoviesScraper } from './sources/ridomovies';
-import { slidemoviesScraper } from './sources/slidemovies';
 import { soaperTvScraper } from './sources/soapertv';
 import { vidifyScraper } from './sources/vidify';
 import { vidlinkScraper } from './sources/vidlink';
@@ -130,16 +126,12 @@ export function gatherAllSources(): Array<Sourcerer> {
     cuevana3Scraper,
     ridooMoviesScraper,
     hdRezkaScraper,
-    insertunitScraper,
     soaperTvScraper,
     myanimeScraper,
     tugaflixScraper,
-    ee3Scraper,
     fsharetvScraper,
-    slidemoviesScraper,
     coitusScraper,
     nunflixScraper,
-    EightStreamScraper,
     wecimaScraper,
     animeflvScraper,
     animekaiScraper,
@@ -152,7 +144,6 @@ export function gatherAllSources(): Array<Sourcerer> {
     animetsuScraper,
     lookmovieScraper,
     pelisplushdScraper,
-    movies4fScraper,
     debridScraper,
     cinehdplusScraper,
     cinesuScraper,
