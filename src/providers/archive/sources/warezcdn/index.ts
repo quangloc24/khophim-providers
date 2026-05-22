@@ -1,8 +1,8 @@
 import { SourcererEmbed, SourcererOutput, makeSourcerer } from '@/providers/base';
 import { mixdropScraper } from '@/providers/embeds/mixdrop';
-import { warezcdnembedHlsScraper } from '@/providers/embeds/warezcdn/hls';
-import { warezcdnembedMp4Scraper } from '@/providers/embeds/warezcdn/mp4';
-import { warezPlayerScraper } from '@/providers/embeds/warezcdn/warezplayer';
+import { warezcdnembedHlsScraper } from '@/providers/archive/embeds/warezcdn/hls';
+import { warezcdnembedMp4Scraper } from '@/providers/archive/embeds/warezcdn/mp4';
+import { warezPlayerScraper } from '@/providers/archive/embeds/warezcdn/warezplayer';
 import { ScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
 

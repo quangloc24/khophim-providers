@@ -54,9 +54,6 @@ import {
 } from './embeds/vidsrcsu';
 import { viperScraper } from './embeds/viper';
 import { voeScraper } from './embeds/voe';
-import { warezcdnembedHlsScraper } from './embeds/warezcdn/hls';
-import { warezcdnembedMp4Scraper } from './embeds/warezcdn/mp4';
-import { warezPlayerScraper } from './embeds/warezcdn/warezplayer';
 import { zunimeEmbeds } from './embeds/zunime';
 import {
   videasyYoruEmbed,
@@ -122,7 +119,6 @@ import { vidifyScraper } from './sources/vidify';
 import { vidlinkScraper } from './sources/vidlink';
 import { vidnestScraper } from './sources/vidnest';
 import { vidrockScraper } from './sources/vidrock';
-import { warezcdnScraper } from './sources/warezcdn';
 import { watchanimeworldScraper } from './sources/watchanimeworld';
 import { wecimaScraper } from './sources/wecima';
 import { zunimeScraper } from './sources/zunime';
@@ -134,7 +130,6 @@ export function gatherAllSources(): Array<Sourcerer> {
     cuevana3Scraper,
     ridooMoviesScraper,
     hdRezkaScraper,
-    warezcdnScraper,
     insertunitScraper,
     soaperTvScraper,
     myanimeScraper,
@@ -190,9 +185,6 @@ export function gatherAllEmbeds(): Array<Embed> {
     doodScraper,
     streamvidScraper,
     streamtapeScraper,
-    warezcdnembedHlsScraper,
-    warezcdnembedMp4Scraper,
-    warezPlayerScraper,
     streambucketScraper,
     VidsrcsuServer1Scraper,
     VidsrcsuServer2Scraper,
