@@ -88,6 +88,7 @@ import {
 } from './embeds/vidfast';
 
 import { animeflvScraper } from './sources/animeflv';
+import { kickassanimeScraper } from './sources/kickassanime';
 import { animetsuScraper } from './sources/animetsu';
 import { cinehdplusScraper } from './sources/cinehdplus-es';
 import { cinesuScraper } from './sources/cinesu';
@@ -134,6 +135,7 @@ export function gatherAllSources(): Array<Sourcerer> {
     nunflixScraper,
     wecimaScraper,
     animeflvScraper,
+    kickassanimeScraper,
     animekaiScraper,
     FedAPIScraper,
     FedAPIDBScraper,
