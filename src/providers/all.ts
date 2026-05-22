@@ -54,6 +54,16 @@ import { viperScraper } from './embeds/viper';
 import { voeScraper } from './embeds/voe';
 import { zunimeEmbeds } from './embeds/zunime';
 import {
+  xprimePrimenetEmbed,
+  xprimeFingerEmbed,
+  xprimePrimeboxEmbed,
+  xprimeKingEmbed,
+  xprimeFacileEmbed,
+  xprimeLighterEmbed,
+  xprimeFedEmbed,
+  xprimeEekEmbed,
+} from './embeds/xprime';
+import {
   videasyYoruEmbed,
   videasyNeonEmbed,
   videasyBreachEmbed,
@@ -96,6 +106,7 @@ import { icefyScraper } from './sources/icefy';
 import { vixsrcScraper } from './sources/vixsrc';
 import { vidzeeScraper } from './sources/vidzee';
 import { videasyScraper } from './sources/videasy';
+import { xprimeScraper } from './sources/xprime';
 import { vidfastScraper } from './sources/vidfast';
 import { vidkingScraper } from './sources/vidking';
 import { cinezoScraper } from './sources/cinezo';
@@ -122,6 +133,7 @@ import { zunimeScraper } from './sources/zunime';
 export function gatherAllSources(): Array<Sourcerer> {
   // all sources are gathered here
   return [
+    xprimeScraper,
     fsOnlineScraper,
     cuevana3Scraper,
     ridooMoviesScraper,
@@ -216,6 +228,14 @@ export function gatherAllEmbeds(): Array<Embed> {
     supervideoScraper,
     voeScraper,
     AnimekaiScraper,
+    xprimePrimenetEmbed,
+    xprimeFingerEmbed,
+    xprimePrimeboxEmbed,
+    xprimeKingEmbed,
+    xprimeFacileEmbed,
+    xprimeLighterEmbed,
+    xprimeFedEmbed,
+    xprimeEekEmbed,
     videasyYoruEmbed,
     videasyNeonEmbed,
     videasyBreachEmbed,
