@@ -58,17 +58,21 @@ async function scrapeXPrimeEmbed(ctx: any) {
   // 1. Solve Altcha challenge
   const altchaPayload = await solveAltcha(ctx);
 
-  // 2. Fetch encrypted text
+  // 2. Build exact query parameters matching the Python implementation
   const params: Record<string, string> = {
     name: title,
     id: tmdbId,
-    imdb: imdbId,
-    year,
     altcha: altchaPayload,
   };
+  if (imdbId) {
+    params.imdb = imdbId;
+  }
+  if (year) {
+    params.year = year;
+  }
   if (type === 'show') {
-    params.season = season;
-    params.episode = episode;
+    if (season) params.season = season;
+    if (episode) params.episode = episode;
   }
 
   const query = new URLSearchParams(params).toString();
@@ -81,24 +85,33 @@ async function scrapeXPrimeEmbed(ctx: any) {
     }
   });
 
-  if (!encrypted || encrypted.length < 10) {
+  if (!encrypted) {
     throw new NotFoundError('Failed to get encrypted stream payload');
   }
 
   let decrypted: any = null;
 
-  // Try direct JSON parsing first (in case it is already decrypted/JSON)
-  try {
-    const parsed = JSON.parse(encrypted);
-    if (parsed && parsed.streams) {
-      decrypted = parsed;
+  // If the response is already parsed as a JS Object
+  if (typeof encrypted === 'object' && encrypted !== null) {
+    if (encrypted.streams) {
+      decrypted = encrypted;
     }
-  } catch {
-    // Ignore and proceed to decrypt API
   }
 
-  // Fallback to decrypt API if direct parse wasn't possible
-  if (!decrypted) {
+  // Otherwise try JSON parsing if it is a string
+  if (!decrypted && typeof encrypted === 'string') {
+    try {
+      const parsed = JSON.parse(encrypted);
+      if (parsed && parsed.streams) {
+        decrypted = parsed;
+      }
+    } catch {
+      // Ignore
+    }
+  }
+
+  // Fallback to decrypt API if direct parse wasn't possible and encrypted is a string
+  if (!decrypted && typeof encrypted === 'string') {
     try {
       const decRes = await ctx.proxiedFetcher('https://enc-dec.app/api/dec-xprime', {
         method: 'POST',
@@ -141,7 +154,6 @@ async function scrapeXPrimeEmbed(ctx: any) {
 }
 
 // 7 server embeds
-
 export const xprimeFingerEmbed = makeEmbed({
   id: 'xprime-finger',
   name: 'Finger (xPrime)',
