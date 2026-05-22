@@ -54,7 +54,6 @@ import { viperScraper } from './embeds/viper';
 import { voeScraper } from './embeds/voe';
 import { zunimeEmbeds } from './embeds/zunime';
 import {
-  xprimePrimenetEmbed,
   xprimeFingerEmbed,
   xprimePrimeboxEmbed,
   xprimeKingEmbed,
@@ -228,7 +227,6 @@ export function gatherAllEmbeds(): Array<Embed> {
     supervideoScraper,
     voeScraper,
     AnimekaiScraper,
-    xprimePrimenetEmbed,
     xprimeFingerEmbed,
     xprimePrimeboxEmbed,
     xprimeKingEmbed,

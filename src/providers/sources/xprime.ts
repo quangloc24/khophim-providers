@@ -1,7 +1,7 @@
 import { SourcererOutput, makeSourcerer } from '@/providers/base';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 
-const servers = ['primenet', 'finger', 'primebox', 'king', 'facile', 'lighter', 'fed', 'eek'];
+const servers = ['finger', 'primebox', 'king', 'facile', 'lighter', 'fed', 'eek'];
 
 async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promise<SourcererOutput> {
   const title = ctx.media.title;

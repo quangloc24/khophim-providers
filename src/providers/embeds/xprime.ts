@@ -140,14 +140,7 @@ async function scrapeXPrimeEmbed(ctx: any) {
   };
 }
 
-// 8 server embeds
-export const xprimePrimenetEmbed = makeEmbed({
-  id: 'xprime-primenet',
-  name: 'PrimeNet (xPrime)',
-  rank: 1008,
-  flags: [],
-  scrape: scrapeXPrimeEmbed,
-});
+// 7 server embeds
 
 export const xprimeFingerEmbed = makeEmbed({
   id: 'xprime-finger',
