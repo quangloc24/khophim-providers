@@ -54,9 +54,7 @@ async function scrapeVideasyEmbed(ctx: any, filterQuality?: string) {
     if (lower === '720p' || lower === '720') return '720';
     if (lower === '480p' || lower === '480') return '480';
     if (lower === '360p' || lower === '360') return '360';
-    // fallback: strip trailing 'p' for numeric quality like '540p'
-    const stripped = raw.replace(/p$/i, '');
-    return stripped || 'unknown';
+    return 'unknown';
   }
 
   const qualities: Record<string, { type: 'mp4', url: string }> = {};
