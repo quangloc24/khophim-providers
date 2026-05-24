@@ -17,6 +17,13 @@ export function makeAnimetsuEmbed(id: string, rank: number = 100) {
 
       const res = await ctx.proxiedFetcher<any>(`/v2/api/anime/oppai/${animeId}/${episode}`, {
         baseUrl: 'https://animetsu.net',
+        headers: {
+          'User-Agent':
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/json, text/plain, */*',
+          'Referer': 'https://animetsu.net/',
+          'Origin': 'https://animetsu.net',
+        },
         query: {
           server: serverId,
           source_type: subOrDub || 'sub',
