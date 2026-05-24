@@ -1,6 +1,4 @@
 import { Embed, Sourcerer } from '@/providers/base';
-import { AnimekaiScraper } from './embeds/animekai';
-import { animekaiScraper } from './sources/animekai';
 import { FedAPIScraper } from './sources/fedapi';
 import { FedAPIDBScraper } from './sources/fedapidb';
 import { doodScraper } from '@/providers/embeds/dood';
@@ -115,7 +113,6 @@ import { debridScraper } from './sources/debrid';
 import { fullhdfilmizleScraper } from './sources/fullhdfilmizle';
 import { hdRezkaScraper } from './sources/hdrezka';
 import { lookmovieScraper } from './sources/lookmovie';
-import { multiembedScraper } from './sources/multiembed';
 import { myanimeScraper } from './sources/myanime';
 import { nunflixScraper } from './sources/nunflix';
 import { pelisplushdScraper } from './sources/pelisplushd';
@@ -145,7 +142,6 @@ export function gatherAllSources(): Array<Sourcerer> {
     nunflixScraper,
     wecimaScraper,
     animeflvScraper,
-    animekaiScraper,
     FedAPIScraper,
     FedAPIDBScraper,
     vidsrcvipScraper,
@@ -170,7 +166,6 @@ export function gatherAllSources(): Array<Sourcerer> {
     vidlinkScraper,
     vidrockScraper,
     watchanimeworldScraper,
-    multiembedScraper,
   ];
 }
 
@@ -226,7 +221,6 @@ export function gatherAllEmbeds(): Array<Embed> {
     droploadScraper,
     supervideoScraper,
     voeScraper,
-    AnimekaiScraper,
     xprimeFingerEmbed,
     xprimePrimeboxEmbed,
     xprimeKingEmbed,

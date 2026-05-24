@@ -1,18 +1,9 @@
 /* eslint-disable no-console */
 import { NotFoundError } from '@/utils/errors';
-
+import { labelToLanguageCode } from '../captions';
 import { EmbedOutput, makeEmbed } from '../base';
 
-const ANIMETSU_SERVERS = ['pahe', 'zoro', 'zaza', 'meg', 'bato'] as const;
-
-const baseUrl = 'https://backend.animetsu.net';
-const headers = {
-  referer: 'https://animetsu.net/',
-  origin: 'https://backend.animetsu.net',
-  accept: 'application/json, text/plain, */*',
-  'User-Agent':
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-};
+const ANIMETSU_SERVERS = ['pahe', 'kite', 'dio', 'meg', 'kiss', 'zoro', 'zaza', 'bato'] as const;
 
 export function makeAnimetsuEmbed(id: string, rank: number = 100) {
   return makeEmbed({
@@ -21,74 +12,47 @@ export function makeAnimetsuEmbed(id: string, rank: number = 100) {
     rank,
     flags: [],
     async scrape(ctx): Promise<EmbedOutput> {
-      const serverName = id as (typeof ANIMETSU_SERVERS)[number];
+      const { animeId, episode, serverId, subOrDub } = JSON.parse(ctx.url);
 
-      const query = JSON.parse(ctx.url);
-      const { type, anilistId, episode } = query;
-
-      if (type !== 'movie' && type !== 'show') {
-        throw new NotFoundError('Unsupported media type');
-      }
-
-      const res = await ctx.proxiedFetcher(`/api/anime/tiddies`, {
-        baseUrl,
-        headers,
+      const res = await ctx.proxiedFetcher<any>(`/v2/api/anime/oppai/${animeId}/${episode}`, {
+        baseUrl: 'https://animetsu.net',
         query: {
-          server: serverName,
-          id: String(anilistId),
-          num: String(episode ?? 1),
-          subType: 'dub',
+          server: serverId,
+          source_type: subOrDub || 'sub',
         },
       });
-
-      console.log('Animetsu API Response:', JSON.stringify(res, null, 2));
 
       const source = res?.sources?.[0];
       if (!source?.url) throw new NotFoundError('No source URL found');
 
-      const streamUrl = source.url;
-      const sourceType = source.type;
-      const sourceQuality = source.quality;
+      // Construct direct HLS playlist URL
+      let videoUrl = source.url;
+      if (source.need_proxy && videoUrl.startsWith('/')) {
+        videoUrl = `https://swiftstream.top/proxy${videoUrl}`;
+      }
+
+      // Extract captions/subtitles
+      const captions = (res.subs || [])
+        .filter((sub: any) => sub.url)
+        .map((sub: any) => ({
+          id: sub.url,
+          url: sub.url,
+          type: 'vtt',
+          language: labelToLanguageCode(sub.lang || 'English') || 'en',
+          hasCorsRestrictions: false,
+        }));
 
       ctx.progress(100);
-
-      if (sourceType === 'mp4') {
-        let qualityKey: string | number = 'unknown';
-        if (sourceQuality) {
-          const qualityMatch = sourceQuality.match(/(\d+)p?/);
-          if (qualityMatch) {
-            qualityKey = parseInt(qualityMatch[1], 10);
-          }
-        }
-
-        return {
-          stream: [
-            {
-              id: 'primary',
-              captions: [],
-              qualities: {
-                [qualityKey]: {
-                  type: 'mp4',
-                  url: streamUrl,
-                },
-              },
-              type: 'file',
-              headers,
-              flags: [],
-            },
-          ],
-        };
-      }
 
       return {
         stream: [
           {
             id: 'primary',
             type: 'hls',
-            playlist: streamUrl,
-            headers,
+            playlist: videoUrl,
+            headers: {},
             flags: [],
-            captions: [],
+            captions,
           },
         ],
       };

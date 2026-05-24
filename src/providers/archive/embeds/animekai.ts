@@ -2,7 +2,7 @@ import { flags } from '@/entrypoint/utils/targets';
 import { EmbedOutput, makeEmbed } from '@/providers/base';
 import { NotFoundError } from '@/utils/errors';
 
-import { Caption, labelToLanguageCode } from '../captions';
+import { Caption, labelToLanguageCode } from '../../captions';
 
 interface StreamData {
   headers: {
