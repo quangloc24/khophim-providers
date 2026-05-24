@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { flags } from '../../entrypoint/utils/targets';
 import { NotFoundError } from '@/utils/errors';
 import { labelToLanguageCode } from '../captions';
 import { EmbedOutput, makeEmbed } from '../base';
@@ -10,7 +11,7 @@ export function makeAnimetsuEmbed(id: string, rank: number = 100) {
     id: `animetsu-${id}`,
     name: `Animetsu ${id.charAt(0).toUpperCase() + id.slice(1)}`,
     rank,
-    flags: [],
+    flags: [flags.CORS_ALLOWED],
     async scrape(ctx): Promise<EmbedOutput> {
       const { animeId, episode, serverId, subOrDub } = JSON.parse(ctx.url);
 
@@ -50,8 +51,11 @@ export function makeAnimetsuEmbed(id: string, rank: number = 100) {
             id: 'primary',
             type: 'hls',
             playlist: videoUrl,
-            headers: {},
-            flags: [],
+            headers: {
+              Referer: 'https://animetsu.net/',
+              Origin: 'https://animetsu.net',
+            },
+            flags: [flags.CORS_ALLOWED],
             captions,
           },
         ],
