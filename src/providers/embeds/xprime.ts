@@ -1,3 +1,4 @@
+import { flags } from '@/entrypoint/utils/targets';
 import { makeEmbed } from '@/providers/base';
 import { NotFoundError } from '@/utils/errors';
 import SHA256 from 'crypto-js/sha256';
@@ -146,7 +147,7 @@ async function scrapeXPrimeEmbed(ctx: any) {
         playlist: hlsUrl,
         headers,
         type: 'hls' as const,
-        flags: [],
+        flags: [flags.CORS_ALLOWED],
         captions: [],
       }
     ]
@@ -158,7 +159,7 @@ export const xprimeFingerEmbed = makeEmbed({
   id: 'xprime-finger',
   name: 'Finger (xPrime)',
   rank: 1007,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: scrapeXPrimeEmbed,
 });
 
@@ -166,7 +167,7 @@ export const xprimePrimeboxEmbed = makeEmbed({
   id: 'xprime-primebox',
   name: 'PrimeBox (xPrime)',
   rank: 1006,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: scrapeXPrimeEmbed,
 });
 
@@ -174,7 +175,7 @@ export const xprimeKingEmbed = makeEmbed({
   id: 'xprime-king',
   name: 'King (xPrime)',
   rank: 1005,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: scrapeXPrimeEmbed,
 });
 
@@ -182,7 +183,7 @@ export const xprimeFacileEmbed = makeEmbed({
   id: 'xprime-facile',
   name: 'Facile (xPrime)',
   rank: 1004,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: scrapeXPrimeEmbed,
 });
 
@@ -190,7 +191,7 @@ export const xprimeLighterEmbed = makeEmbed({
   id: 'xprime-lighter',
   name: 'Lighter (xPrime)',
   rank: 1003,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: scrapeXPrimeEmbed,
 });
 
@@ -198,7 +199,7 @@ export const xprimeFedEmbed = makeEmbed({
   id: 'xprime-fed',
   name: 'Fed (xPrime)',
   rank: 1002,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: scrapeXPrimeEmbed,
 });
 
@@ -206,6 +207,6 @@ export const xprimeEekEmbed = makeEmbed({
   id: 'xprime-eek',
   name: 'Eek (xPrime)',
   rank: 1001,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: scrapeXPrimeEmbed,
 });

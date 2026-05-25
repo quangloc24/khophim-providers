@@ -1,3 +1,4 @@
+import { flags } from '@/entrypoint/utils/targets';
 import { SourcererOutput, makeSourcerer } from '@/providers/base';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 
@@ -45,7 +46,7 @@ export const xprimeScraper = makeSourcerer({
   name: 'xPrime 🔥',
   rank: 1000,
   disabled: false,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrapeMovie: comboScraper,
   scrapeShow: comboScraper,
 });
