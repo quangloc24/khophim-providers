@@ -1,6 +1,6 @@
 // Decrypted: "https://streamrip-website-production.up.railway.app"
 function getApiUrl(): string {
-  const rot13 = 'uggcf://fgernezvc-jrofvgr-cebqhpgvba.hc.envjynl.ncc';
+  const rot13 = 'uggcf://fgernezvc-jrofvgr-cebqhpgvba.hc.evnlyjnl.ncc';
   return rot13.replace(/[a-zA-Z]/g, (c) =>
     String.fromCharCode(c.charCodeAt(0) + (c.toLowerCase() < 'n' ? 13 : -13))
   );
