@@ -168,6 +168,14 @@ export declare type FullScraperEvents = {
     start?: (id: string) => void;
 };
 
+export declare interface GearlessJoeDownloadLink {
+    title: string;
+    url: string;
+    size: string;
+    resolution: string;
+    host: string;
+}
+
 export declare function getBuiltinEmbeds(): Embed[];
 
 export declare function getBuiltinExternalSources(): Sourcerer[];
@@ -280,6 +288,14 @@ export declare type ScrapeContext = {
     progress(val: number): void;
     features: FeatureMap;
 };
+
+export declare function scrapeGearlessJoeDownloads(options: {
+    tmdbId: string;
+    type: 'movie' | 'show';
+    season?: number;
+    episode?: number;
+    fetcher?: (url: string, init?: any) => Promise<any>;
+}): Promise<GearlessJoeDownloadLink[]>;
 
 export declare type ScrapeMedia = ShowMedia | MovieMedia;
 
