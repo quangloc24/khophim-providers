@@ -291,9 +291,10 @@ export declare type ScrapeContext = {
 
 export declare function scrapeGearlessJoeDownloads(options: {
     tmdbId: string;
-    type: 'movie' | 'show';
+    type: 'movie' | 'show' | 'anime';
     season?: number;
     episode?: number;
+    anilistId?: string;
     fetcher?: (url: string, init?: any) => Promise<any>;
 }): Promise<GearlessJoeDownloadLink[]>;
 
