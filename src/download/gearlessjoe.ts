@@ -1,10 +1,4 @@
-// Decrypted: "https://streamrip-website-production.up.railway.app"
-function getApiUrl(): string {
-  const rot13 = 'uggcf://fgernezvc-jrofvgr-cebqhpgvba.hc.evnlyjnl.ncc';
-  return rot13.replace(/[a-zA-Z]/g, (c) =>
-    String.fromCharCode(c.charCodeAt(0) + (c.toLowerCase() < 'n' ? 13 : -13))
-  );
-}
+const baseUrl = 'https://streamrip-website-production.up.railway.app';
 
 export interface GearlessJoeDownloadLink {
   title: string;
@@ -22,7 +16,6 @@ export async function scrapeGearlessJoeDownloads(options: {
   anilistId?: string;
   fetcher?: (url: string, init?: any) => Promise<any>;
 }): Promise<GearlessJoeDownloadLink[]> {
-  const baseUrl = getApiUrl();
   
   let url = '';
   if (options.type === 'show') {
