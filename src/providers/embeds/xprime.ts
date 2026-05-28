@@ -136,8 +136,8 @@ async function scrapeXPrimeEmbed(ctx: any) {
   if (!hlsUrl) throw new NotFoundError('No HLS stream found');
 
   const headers = {
-    Referer: 'https://xprime.tv/',
-    Origin: 'https://xprime.tv',
+    Referer: 'https://pstream.net/',
+    Origin: 'https://pstream.net',
   };
 
   return {
