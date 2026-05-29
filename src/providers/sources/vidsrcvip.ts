@@ -58,7 +58,7 @@ async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promis
 
 export const vidsrcvipScraper = makeSourcerer({
   id: 'vidsrcvip',
-  name: 'VidSrc.vip',
+  name: 'VidSrc',
   rank: 150,
   disabled: false,
   flags: [flags.CORS_ALLOWED],
