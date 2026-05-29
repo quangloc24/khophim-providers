@@ -29,7 +29,6 @@ import {
 import { supervideoScraper } from './embeds/supervideo';
 import { vidCloudScraper } from './embeds/vidcloud';
 import { vidhideEnglishScraper, vidhideLatinoScraper, vidhideSpanishScraper } from './embeds/vidhide';
-import { vidifyEmbeds } from './embeds/vidify';
 import { VidnestEmbeds } from './embeds/vidnest';
 import {
   VidsrcsuServer10Scraper,
@@ -112,11 +111,9 @@ import { fullhdfilmizleScraper } from './sources/fullhdfilmizle';
 import { hdRezkaScraper } from './sources/hdrezka';
 import { lookmovieScraper } from './sources/lookmovie';
 import { myanimeScraper } from './sources/myanime';
-import { nunflixScraper } from './sources/nunflix';
 import { pelisplushdScraper } from './sources/pelisplushd';
 import { ridooMoviesScraper } from './sources/ridomovies';
 import { soaperTvScraper } from './sources/soapertv';
-import { vidifyScraper } from './sources/vidify';
 import { vidlinkScraper } from './sources/vidlink';
 import { vidnestScraper } from './sources/vidnest';
 import { vidrockScraper } from './sources/vidrock';
@@ -137,11 +134,9 @@ export function gatherAllSources(): Array<Sourcerer> {
     tugaflixScraper,
     fsharetvScraper,
     coitusScraper,
-    nunflixScraper,
     wecimaScraper,
     animeflvScraper,
     vidsrcvipScraper,
-    vidifyScraper,
     zunimeScraper,
     vidnestScraper,
     animetsuScraper,
@@ -203,7 +198,6 @@ export function gatherAllEmbeds(): Array<Embed> {
     // vidsrcNovaEmbed,
     // vidsrcCometEmbed,
     // vidsrcPulsarEmbed,
-    ...vidifyEmbeds,
     ...zunimeEmbeds,
     ...AnimetsuEmbeds,
     ...VidnestEmbeds,
