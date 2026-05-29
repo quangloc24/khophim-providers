@@ -1,6 +1,4 @@
 import { Embed, Sourcerer } from '@/providers/base';
-import { FedAPIScraper } from './sources/fedapi';
-import { FedAPIDBScraper } from './sources/fedapidb';
 import { doodScraper } from '@/providers/embeds/dood';
 import { filemoonScraper } from '@/providers/embeds/filemoon';
 import { mixdropScraper } from '@/providers/embeds/mixdrop';
@@ -142,8 +140,6 @@ export function gatherAllSources(): Array<Sourcerer> {
     nunflixScraper,
     wecimaScraper,
     animeflvScraper,
-    FedAPIScraper,
-    FedAPIDBScraper,
     vidsrcvipScraper,
     vidifyScraper,
     zunimeScraper,
