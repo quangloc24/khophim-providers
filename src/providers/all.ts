@@ -105,7 +105,6 @@ import { vidfastScraper } from './sources/vidfast';
 import { vidkingScraper } from './sources/vidking';
 import { cinezoScraper } from './sources/cinezo';
 import { coitusScraper } from './sources/coitus';
-import { cuevana3Scraper } from './sources/cuevana3';
 import { debridScraper } from './sources/debrid';
 import { fullhdfilmizleScraper } from './sources/fullhdfilmizle';
 import { hdRezkaScraper } from './sources/hdrezka';
@@ -126,7 +125,6 @@ export function gatherAllSources(): Array<Sourcerer> {
   return [
     xprimeScraper,
     fsOnlineScraper,
-    cuevana3Scraper,
     ridooMoviesScraper,
     hdRezkaScraper,
     soaperTvScraper,
