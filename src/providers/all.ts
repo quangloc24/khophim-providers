@@ -7,7 +7,7 @@ import { upcloudScraper } from '@/providers/embeds/upcloud';
 import { fsharetvScraper } from '@/providers/sources/fsharetv';
 import { fsOnlineEmbeds, fsOnlineScraper } from '@/providers/sources/fsonline/index';
 import { tugaflixScraper } from '@/providers/sources/tugaflix';
-import { vidsrcvipScraper } from '@/providers/sources/vidsrcvip';
+import { vidsrcScraper } from '@/providers/sources/vidsrc';
 import { streambucketScraper } from '@/providers/embeds/streambucket';
 
 import { AnimetsuEmbeds } from './embeds/animetsu';
@@ -136,7 +136,7 @@ export function gatherAllSources(): Array<Sourcerer> {
     coitusScraper,
     wecimaScraper,
     animeflvScraper,
-    vidsrcvipScraper,
+    vidsrcScraper,
     zunimeScraper,
     vidnestScraper,
     animetsuScraper,
