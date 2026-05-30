@@ -1,3 +1,4 @@
+import { flags } from '@/entrypoint/utils/targets';
 import { makeEmbed } from '@/providers/base';
 import { NotFoundError } from '@/utils/errors';
 
@@ -84,7 +85,7 @@ export const videasyYoruEmbed = makeEmbed({
   id: 'videasy-yoru',
   name: 'Yoru 🔥 (Original - 4K)',
   rank: 959,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx),
 });
 
@@ -92,7 +93,7 @@ export const videasyNeonEmbed = makeEmbed({
   id: 'videasy-neon',
   name: 'Neon (Original)',
   rank: 958,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx),
 });
 
@@ -100,7 +101,7 @@ export const videasyBreachEmbed = makeEmbed({
   id: 'videasy-breach',
   name: 'Breach (Original)',
   rank: 957,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx),
 });
 
@@ -108,7 +109,7 @@ export const videasyCypherEmbed = makeEmbed({
   id: 'videasy-cypher',
   name: 'Cypher (Original)',
   rank: 956,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx),
 });
 
@@ -116,7 +117,7 @@ export const videasySageEmbed = makeEmbed({
   id: 'videasy-sage',
   name: 'Sage (Original)',
   rank: 955,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx),
 });
 
@@ -124,7 +125,7 @@ export const videasyVyseEmbed = makeEmbed({
   id: 'videasy-vyse',
   name: 'Vyse (Original)',
   rank: 954,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx, 'English'),
 });
 
@@ -132,7 +133,7 @@ export const videasyOmenEmbed = makeEmbed({
   id: 'videasy-omen',
   name: 'Omen (Original)',
   rank: 953,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx),
 });
 
@@ -140,7 +141,7 @@ export const videasyRazeEmbed = makeEmbed({
   id: 'videasy-raze',
   name: 'Raze (Original)',
   rank: 952,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx),
 });
 
@@ -148,7 +149,7 @@ export const videasyFadeEmbed = makeEmbed({
   id: 'videasy-fade',
   name: 'Fade (Hindi Audio)',
   rank: 951,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx, 'Hindi'),
 });
 
@@ -156,6 +157,6 @@ export const videasyKilljoyEmbed = makeEmbed({
   id: 'videasy-killjoy',
   name: 'Killjoy (German Audio)',
   rank: 950,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVideasyEmbed(ctx),
 });

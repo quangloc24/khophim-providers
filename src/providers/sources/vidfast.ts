@@ -1,3 +1,4 @@
+import { flags } from '@/entrypoint/utils/targets';
 import { SourcererOutput, makeSourcerer } from '@/providers/base';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 
@@ -60,7 +61,7 @@ export const vidfastScraper = makeSourcerer({
   // Enabled: VidFast player encryption flow is fully implemented and resolved 
   // via the enc-dec.app API decryption endpoints.
   disabled: false,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrapeMovie: comboScraper,
   scrapeShow: comboScraper,
 });

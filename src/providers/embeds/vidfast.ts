@@ -1,3 +1,4 @@
+import { flags } from '@/entrypoint/utils/targets';
 import { makeEmbed } from '@/providers/base';
 import { NotFoundError } from '@/utils/errors';
 
@@ -142,7 +143,7 @@ export const vidfastAlphaEmbed = makeEmbed({
   id: 'vidfast-alpha',
   name: 'Alpha (VidFast)',
   rank: 919,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Alpha'),
 });
 
@@ -150,7 +151,7 @@ export const vidfastBetaEmbed = makeEmbed({
   id: 'vidfast-beta',
   name: 'Beta (VidFast)',
   rank: 918,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Beta'),
 });
 
@@ -158,7 +159,7 @@ export const vidfastOscarEmbed = makeEmbed({
   id: 'vidfast-oscar',
   name: 'Oscar (VidFast)',
   rank: 917,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Oscar'),
 });
 
@@ -166,7 +167,7 @@ export const vidfastMaxEmbed = makeEmbed({
   id: 'vidfast-max',
   name: 'Max (VidFast)',
   rank: 916,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Max'),
 });
 
@@ -174,7 +175,7 @@ export const vidfastIronEmbed = makeEmbed({
   id: 'vidfast-iron',
   name: 'Iron (VidFast)',
   rank: 915,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Iron'),
 });
 
@@ -182,7 +183,7 @@ export const vidfastCharlieEmbed = makeEmbed({
   id: 'vidfast-charlie',
   name: 'Charlie (VidFast)',
   rank: 914,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Charlie'),
 });
 
@@ -190,7 +191,7 @@ export const vidfastCobraEmbed = makeEmbed({
   id: 'vidfast-cobra',
   name: 'Cobra (VidFast)',
   rank: 913,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Cobra'),
 });
 
@@ -198,7 +199,7 @@ export const vidfastViperEmbed = makeEmbed({
   id: 'vidfast-viper',
   name: 'Viper (VidFast)',
   rank: 912,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Viper'),
 });
 
@@ -206,7 +207,7 @@ export const vidfastRangerEmbed = makeEmbed({
   id: 'vidfast-ranger',
   name: 'Ranger (VidFast)',
   rank: 911,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Ranger'),
 });
 
@@ -214,7 +215,7 @@ export const vidfastSpecterEmbed = makeEmbed({
   id: 'vidfast-specter',
   name: 'Specter (VidFast)',
   rank: 910,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Specter'),
 });
 
@@ -222,7 +223,7 @@ export const vidfastEchoEmbed = makeEmbed({
   id: 'vidfast-echo',
   name: 'Echo (VidFast)',
   rank: 909,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Echo'),
 });
 
@@ -230,7 +231,7 @@ export const vidfastVodkaEmbed = makeEmbed({
   id: 'vidfast-vodka',
   name: 'Vodka (VidFast)',
   rank: 908,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Vodka'),
 });
 
@@ -238,7 +239,7 @@ export const vidfastPabloEmbed = makeEmbed({
   id: 'vidfast-pablo',
   name: 'Pablo (VidFast)',
   rank: 907,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Pablo'),
 });
 
@@ -246,7 +247,7 @@ export const vidfastLocoEmbed = makeEmbed({
   id: 'vidfast-loco',
   name: 'Loco (VidFast)',
   rank: 906,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Loco'),
 });
 
@@ -254,7 +255,7 @@ export const vidfastSambaEmbed = makeEmbed({
   id: 'vidfast-samba',
   name: 'Samba (VidFast)',
   rank: 905,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Samba'),
 });
 
@@ -262,7 +263,7 @@ export const vidfastBollywoodEmbed = makeEmbed({
   id: 'vidfast-bollywood',
   name: 'Bollywood (VidFast)',
   rank: 904,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Bollywood'),
 });
 
@@ -270,7 +271,7 @@ export const vidfastKiritoEmbed = makeEmbed({
   id: 'vidfast-kirito',
   name: 'Kirito (VidFast)',
   rank: 903,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Kirito'),
 });
 
@@ -278,7 +279,7 @@ export const vidfastMeliodasEmbed = makeEmbed({
   id: 'vidfast-meliodas',
   name: 'Meliodas (VidFast)',
   rank: 902,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Meliodas'),
 });
 
@@ -287,6 +288,6 @@ export const vidfastVefastEmbed = makeEmbed({
   id: 'vidfast-vfast',
   name: 'Vfast 🔥 (4K)',
   rank: 901,
-  flags: [],
+  flags: [flags.CORS_ALLOWED],
   scrape: (ctx) => scrapeVidfastEmbed(ctx, 'Vfast'),
 });
