@@ -3,7 +3,6 @@ import { load } from 'cheerio';
 import { SourcererEmbed, makeSourcerer } from '@/providers/base';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
-import { fetchTMDBName } from '@/utils/tmdb';
 
 import { IframeSourceResult, SearchResult } from './types';
 
@@ -19,17 +18,10 @@ const normalizeTitle = (title: string): string => {
 };
 
 const universalScraper = async (ctx: MovieScrapeContext | ShowScrapeContext) => {
-  let title = ctx.media.title;
-  try {
-    title = await fetchTMDBName(ctx, 'en-US');
-  } catch {
-    // Fallback to localized client title if TMDB fetch fails
-  }
-
   const searchResult = await ctx.proxiedFetcher<SearchResult>('/search', {
     baseUrl: ridoMoviesApiBase,
     query: {
-      q: title,
+      q: ctx.media.title,
     },
   });
 
@@ -44,7 +36,7 @@ const universalScraper = async (ctx: MovieScrapeContext | ShowScrapeContext) => 
     return { name, year, fullSlug };
   });
 
-  const normalizedSearchTitle = normalizeTitle(title);
+  const normalizedSearchTitle = normalizeTitle(ctx.media.title);
   const searchYear = ctx.media.releaseYear.toString();
 
   let targetMedia = mediaData.find((m) => normalizeTitle(m.name) === normalizedSearchTitle && m.year === searchYear);

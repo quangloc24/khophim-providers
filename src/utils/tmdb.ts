@@ -9,11 +9,6 @@ export async function fetchTMDBName(
   const type = ctx.media.type === 'movie' ? 'movie' : 'tv';
   const url = `https://api.themoviedb.org/3/${type}/${ctx.media.tmdbId}?api_key=${TMDB_API_KEY}&language=${lang}`;
 
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Error fetching TMDB data: ${response.statusText}`);
-  }
-
-  const data = await response.json();
+  const data = await ctx.proxiedFetcher<any>(url, { method: 'GET' });
   return ctx.media.type === 'movie' ? data.title : data.name;
 }

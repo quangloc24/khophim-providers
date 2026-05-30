@@ -1,7 +1,6 @@
 import { SourcererOutput, makeSourcerer } from '@/providers/base';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
-import { fetchTMDBName } from '@/utils/tmdb';
 
 const decApi = 'https://enc-dec.app/api/dec-videasy';
 
@@ -42,15 +41,8 @@ async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promis
     episode = ctx.media.episode.number;
   }
 
-  let title = ctx.media.title;
-  try {
-    title = await fetchTMDBName(ctx, 'en-US');
-  } catch {
-    // Fallback to localized client title if TMDB fetch fails
-  }
-
   const params = new URLSearchParams({
-    title,
+    title: ctx.media.title,
     mediaType,
     year: String(ctx.media.releaseYear),
     episodeId: String(episode),
