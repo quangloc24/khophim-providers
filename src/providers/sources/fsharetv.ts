@@ -6,14 +6,22 @@ import { compareMedia } from '@/utils/compare';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
 import { getValidQualityFromString } from '@/utils/quality';
+import { fetchTMDBName } from '@/utils/tmdb';
 
 const baseUrl = 'https://fsharetv.co';
 
 async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promise<SourcererOutput> {
+  let title = ctx.media.title;
+  try {
+    title = await fetchTMDBName(ctx, 'en-US');
+  } catch {
+    // Fallback to localized client title if TMDB fetch fails
+  }
+
   const searchPage = await ctx.proxiedFetcher('/search', {
     baseUrl,
     query: {
-      q: ctx.media.title,
+      q: title,
     },
   });
 

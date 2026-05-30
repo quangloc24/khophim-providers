@@ -3,11 +3,19 @@ import { load } from 'cheerio';
 import { SourcererOutput, makeSourcerer } from '@/providers/base';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
+import { fetchTMDBName } from '@/utils/tmdb';
 
 const baseUrl = 'https://wecima.tube';
 
 async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promise<SourcererOutput> {
-  const searchPage = await ctx.proxiedFetcher(`/search/${encodeURIComponent(ctx.media.title)}/`, {
+  let title = ctx.media.title;
+  try {
+    title = await fetchTMDBName(ctx, 'en-US');
+  } catch {
+    // Fallback to localized client title if TMDB fetch fails
+  }
+
+  const searchPage = await ctx.proxiedFetcher(`/search/${encodeURIComponent(title)}/`, {
     baseUrl,
   });
 

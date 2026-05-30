@@ -1,11 +1,17 @@
 import { flags } from '@/entrypoint/utils/targets';
 import { SourcererOutput, makeSourcerer } from '@/providers/base';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
+import { fetchTMDBName } from '@/utils/tmdb';
 
 const servers = ['finger', 'primebox', 'king', 'facile', 'lighter', 'fed', 'eek'];
 
 async function comboScraper(ctx: ShowScrapeContext | MovieScrapeContext): Promise<SourcererOutput> {
-  const title = ctx.media.title;
+  let title = ctx.media.title;
+  try {
+    title = await fetchTMDBName(ctx, 'en-US');
+  } catch {
+    // Fallback to localized client title if TMDB fetch fails
+  }
   const tmdbId = ctx.media.tmdbId;
   const imdbId = ctx.media.imdbId || '';
   const year = String(ctx.media.releaseYear);

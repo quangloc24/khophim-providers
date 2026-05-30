@@ -4,6 +4,7 @@ import { flags } from '@/entrypoint/utils/targets';
 import { SourcererOutput, makeSourcerer } from '@/providers/base';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
+import { fetchTMDBName } from '@/utils/tmdb';
 
 import { MovieData, VideoLinks } from './types';
 import { generateRandomFavs, parseSubtitleLinks, parseVideoLinks } from './utils';
@@ -19,10 +20,17 @@ const baseHeaders = {
 };
 
 async function searchAndFindMediaId(ctx: ShowScrapeContext | MovieScrapeContext): Promise<MovieData | null> {
+  let title = ctx.media.title;
+  try {
+    title = await fetchTMDBName(ctx, 'en-US');
+  } catch {
+    // Fallback to localized client title if TMDB fetch fails
+  }
+
   const searchData = await ctx.proxiedFetcher<string>(`/engine/ajax/search.php`, {
     baseUrl: rezkaBase,
     headers: baseHeaders,
-    query: { q: ctx.media.title },
+    query: { q: title },
   });
   // console.log('Search response length:', searchData.length);
 

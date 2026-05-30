@@ -7,6 +7,7 @@ import { compareMedia } from '@/utils/compare';
 import { MovieScrapeContext, ShowScrapeContext } from '@/utils/context';
 import { NotFoundError } from '@/utils/errors';
 import { convertPlaylistsToDataUrls } from '@/utils/playlist';
+import { fetchTMDBName } from '@/utils/tmdb';
 
 import { InfoResponse } from './types';
 import { SourcererOutput, makeSourcerer } from '../../base';
@@ -14,10 +15,17 @@ import { SourcererOutput, makeSourcerer } from '../../base';
 const baseUrl = 'https://soaper.cc';
 
 const universalScraper = async (ctx: MovieScrapeContext | ShowScrapeContext): Promise<SourcererOutput> => {
+  let title = ctx.media.title;
+  try {
+    title = await fetchTMDBName(ctx, 'en-US');
+  } catch {
+    // Fallback to localized client title if TMDB fetch fails
+  }
+
   const searchResult = await ctx.proxiedFetcher('/search.html', {
     baseUrl,
     query: {
-      keyword: ctx.media.title,
+      keyword: title,
     },
   });
   const search$ = load(searchResult);
