@@ -124,7 +124,7 @@ async function scrapeVidfastEmbed(ctx: any, serverName: string) {
         id: 'primary',
         type: 'hls' as const,
         playlist: playlistUrl,
-        flags: [],
+        flags: [flags.CORS_ALLOWED],
         headers: {
           'User-Agent': defaultHeaders['User-Agent'],
           'Referer': 'https://vidfast.pro/',

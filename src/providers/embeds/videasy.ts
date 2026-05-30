@@ -72,7 +72,7 @@ async function scrapeVideasyEmbed(ctx: any, filterQuality?: string) {
       {
         id: 'primary',
         type: 'file' as const,
-        flags: [],
+        flags: [flags.CORS_ALLOWED],
         headers,
         captions: [],
         qualities,
