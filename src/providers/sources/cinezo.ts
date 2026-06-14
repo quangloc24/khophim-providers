@@ -8,20 +8,20 @@ const L3_KEY = 'Sn00pD0g#L3_AES_S3cur3K3y@2026$sex';
 const L4_KEY = 'Sn00pD0g#L4_HMAC_F1n4lW4ll#2026!sex';
 
 const subSources = [
-  { name: 'onion', movieApi: 'https://iwillfuckyourmom.tulnex.com/onion/movie/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/onion/tv/${id}/${s}/${e}' },
-  { name: 'vidzee', movieApi: 'https://iwillfuckyourmom.tulnex.com/vidzee/movie/${id}?server=0', tvApi: 'https://iwillfuckyourmom.tulnex.com/vidzee/tv/${id}/${s}/${e}?server=0' },
-  { name: 'icefy', movieApi: 'https://iwillfuckyourmom.tulnex.com/icefy/movie/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/icefy/tv/${id}/${s}/${e}' },
-  { name: 'tik', movieApi: 'https://iwillfuckyourmom.tulnex.com/tik/movie/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/tik/tv/${id}/${s}/${e}' },
-  { name: 'vaplayer', movieApi: 'https://iwillfuckyourmom.tulnex.com/vaplayer/movie/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/vaplayer/tv/${id}/${s}/${e}' },
-  { name: 'vidfast-alpha', movieApi: 'https://iwillfuckyourmom.tulnex.com/vidfast/movie/Alpha/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/vidfast/tv/Alpha/${id}/${s}/${e}' },
-  { name: 'uniquestream', movieApi: 'https://iwillfuckyourmom.tulnex.com/uniquestream/movie/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/uniquestream/tv/${id}/${s}/${e}' },
-  { name: 'vidfast-mega', movieApi: 'https://iwillfuckyourmom.tulnex.com/vidfast/movie/Mega/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/vidfast/tv/Mega/${id}/${s}/${e}' },
-  { name: 'vidfast-vrapid', movieApi: 'https://iwillfuckyourmom.tulnex.com/vidfast/movie/VRapid/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/vidfast/tv/VRapid/${id}/${s}/${e}' },
-  { name: 'allmovies', movieApi: 'https://iwillfuckyourmom.tulnex.com/provider/allmovies/movie/${id}?lang=english', tvApi: 'https://iwillfuckyourmom.tulnex.com/provider/allmovies/tv/${id}/${s}/${e}?lang=english' },
-  { name: 'vidlink', movieApi: 'https://iwillfuckyourmom.tulnex.com/provider/vidlink/movie/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/provider/vidlink/tv/${id}/${s}/${e}' },
-  { name: 'vidfast-vedge', movieApi: 'https://iwillfuckyourmom.tulnex.com/vidfast/movie/vedge/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/vidfast/tv/vedge/${id}/${s}/${e}' },
+  { name: 'onion', movieApi: 'https://leavemealone.tulnex.com/onion/movie/${id}', tvApi: 'https://leavemealone.tulnex.com/onion/tv/${id}/${s}/${e}' },
+  { name: 'vidzee', movieApi: 'https://leavemealone.tulnex.com/vidzee/movie/${id}?server=0', tvApi: 'https://leavemealone.tulnex.com/vidzee/tv/${id}/${s}/${e}?server=0' },
+  { name: 'icefy', movieApi: 'https://leavemealone.tulnex.com/icefy/movie/${id}', tvApi: 'https://leavemealone.tulnex.com/icefy/tv/${id}/${s}/${e}' },
+  { name: 'tik', movieApi: 'https://leavemealone.tulnex.com/tik/movie/${id}', tvApi: 'https://leavemealone.tulnex.com/tik/tv/${id}/${s}/${e}' },
+  { name: 'vaplayer', movieApi: 'https://leavemealone.tulnex.com/vaplayer/movie/${id}', tvApi: 'https://leavemealone.tulnex.com/vaplayer/tv/${id}/${s}/${e}' },
+  { name: 'vidfast-alpha', movieApi: 'https://leavemealone.tulnex.com/vidfast/movie/Alpha/${id}', tvApi: 'https://leavemealone.tulnex.com/vidfast/tv/Alpha/${id}/${s}/${e}' },
+  { name: 'uniquestream', movieApi: 'https://leavemealone.tulnex.com/uniquestream/movie/${id}', tvApi: 'https://leavemealone.tulnex.com/uniquestream/tv/${id}/${s}/${e}' },
+  { name: 'vidfast-mega', movieApi: 'https://leavemealone.tulnex.com/vidfast/movie/Mega/${id}', tvApi: 'https://leavemealone.tulnex.com/vidfast/tv/Mega/${id}/${s}/${e}' },
+  { name: 'vidfast-vrapid', movieApi: 'https://leavemealone.tulnex.com/vidfast/movie/VRapid/${id}', tvApi: 'https://leavemealone.tulnex.com/vidfast/tv/VRapid/${id}/${s}/${e}' },
+  { name: 'allmovies', movieApi: 'https://leavemealone.tulnex.com/provider/allmovies/movie/${id}?lang=english', tvApi: 'https://leavemealone.tulnex.com/provider/allmovies/tv/${id}/${s}/${e}?lang=english' },
+  { name: 'vidlink', movieApi: 'https://leavemealone.tulnex.com/provider/vidlink/movie/${id}', tvApi: 'https://leavemealone.tulnex.com/provider/vidlink/tv/${id}/${s}/${e}' },
+  { name: 'vidfast-vedge', movieApi: 'https://leavemealone.tulnex.com/vidfast/movie/vedge/${id}', tvApi: 'https://leavemealone.tulnex.com/vidfast/tv/vedge/${id}/${s}/${e}' },
   { name: 'vidfast-vfast', movieApi: 'https://api.videasy.to/vidfast/movie/vfast/${id}', tvApi: 'https://api.videasy.net/vidfast/tv/vfast/${id}/${s}/${e}' },
-  { name: 'moviebox', movieApi: 'https://iwillfuckyourmom.tulnex.com/moviebox/movie/${id}', tvApi: 'https://iwillfuckyourmom.tulnex.com/moviebox/tv/${id}/${s}/${e}' },
+  { name: 'moviebox', movieApi: 'https://leavemealone.tulnex.com/moviebox/movie/${id}', tvApi: 'https://leavemealone.tulnex.com/moviebox/tv/${id}/${s}/${e}' },
 ];
 
 function base64ToBuffer(b64: string): ArrayBuffer {
